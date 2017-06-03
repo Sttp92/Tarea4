@@ -6,7 +6,7 @@ public class NodoArbolB {
     NodoArbolB izq;
     NodoArbolB der;
 
-    public Object getDato(){
+    public String getDato(){
         return entrada;
     }
 
