@@ -14,6 +14,14 @@ public class MainProgram {
         }
     }
 
+    private static void posOrden(NodoArbolB raiz){
+        if (raiz != null){
+            posOrden(raiz.getIzq());
+            posOrden(raiz.getDer());
+            System.out.print(raiz.getDato());
+        }
+    }
+
     private static void crearArbolBinario(PilaArbol pila_metodo, String[] array_metodo){
         String[] miarray = array_metodo;
         PilaArbol pila = pila_metodo;
@@ -45,16 +53,9 @@ public class MainProgram {
         }
     }
 
-    //public static boolean isNumeric(String s) {
-        //return s != null && s.matches("[-+]?\\d*\\.?\\d+");
-    //}
-
-    public String Recorrer(PilaArbol arbol_derivado){
-        PilaArbol pila_recorrer = new PilaArbol();
-        pila_recorrer = arbol_derivado;
-        if (pila_recorrer.getTop().identificador == 0){
-            return pila_recorrer.desapilar_simbolo();
-        }
+    public String Recorrer(NodoArbolB arbol_derivado){
+        String arbol_recorrer = arbol_derivado.entrada;
+        if (arbol_recorrer == )
     }
 
     public static void main(String args[]) {
