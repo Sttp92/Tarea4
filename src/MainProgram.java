@@ -58,6 +58,29 @@ public class MainProgram {
         if (arbol_recorrer == )
     }
 
+    public String derivar(PilaArbol arbol_sin_derivar, String respecto_a){
+        NodoArbolB nodo_raiz = arbol_sin_derivar.desapilar_arbol();
+        if(nodo_raiz.identificador == 0){
+            if (nodo_raiz.getDato().equals(respecto_a)){
+                return "1";
+            } else {
+                return "0";
+            }
+        } else {
+            switch () {
+            case "+":
+                return derivar(arbolHijo1, respecto_a) + derivar(arbolHijo2, respecto_a) + "+";
+            case "-":
+                return derivar(arbolHijo1, respecto_a) + derivar(arbolHijo2, respecto_a) + "-";
+            case "*":
+                return derivar(arbolHijo1, respecto_a) + posOrden(arbolHijo2) + "*" + derivar(arbolHijo2, respecto_a) + posOrden(arbolHijo1) + "*" + "+";
+            default:
+                return derivar(arbolHijo1, respecto_a) + posOrden(arbolHijo2) + "*" + derivar(arbolHijo2, respecto_a) + posOrden(arbolHijo1) + "*" + "-" + posOrden(arbolHijo2) + posOrden(arbolHijo2) + "*" + "/";
+            }
+        }
+
+    }
+
     public static void main(String args[]) {
         Scanner op_aritmetica = new Scanner(System.in);
         System.out.print("Ingresar expresion en polaca inversa: ");
@@ -74,53 +97,7 @@ public class MainProgram {
         inOrden(arbol);
     }
 
-    public static void String derivar(PilaArbol arbol_sin_derivar, String respecto_a){
-        NodoArbol nodo_raiz = arbol_sin_derivar.getTop();
-        if(nodo_raiz.identificador == 0){
-            if (nodo_raiz.getDato().equals(respecto_a)){
-                return "1";
-            } else {
-                return "0";
-            }
-        } else {
-            switch () {
-            case "+":
-                return derivar(arbolHijo1, respecto_a) + derivar(arbolHijo2, respecto_a) + "+";
-            case "-":
-                return derivar(arbolHijo1, respecto_a) + derivar(arbolHijo2, respecto_a) + "-";
-            case "*":
-                return derivar(arbolHijo1, respecto_a) + "arbolHijo2" + "*" + derivar(arbolHijo2, respecto_a) + "arbolHijo1" + "*" + "+";
-            default:
-                return derivar(arbolHijo1, respecto_a) + "arbolHijo2" + "*" + derivar(arbolHijo2, respecto_a) + "arbolHijo1" + "*" + "-" + "arbolHijo2" + "arbolHijo2" + "*" + "/";
-                break;
-            }
-        }
-
-    }
 }
-
-
-
-def derivar(arbol, respecto_a)
-  if raiz == numero
-    return 0
-  elsif raiz == respecto_a
-    return 1
-  elsif (raiz == ( "+" || "-" || "*" || "/"))
-    if raiz == "+"
-      return "derivar(arbolHijo1, respecto_a) derivar(arbolHijo2, respecto_a) +"
-    elsif raiz == "-"
-      return "derivar(arbolHijo1, respecto_a) derivar(arbolHijo2, respecto_a) -"
-    elsif raiz == "*"
-      return "derivar(arbolHijo1, respecto_a) arbolHijo2 * derivar(arbolHijo2, respecto_a) arbolHijo1 * +"
-    else
-      return "derivar(arbolHijo1, respecto_a) arbolHijo2 * derivar(arbolHijo2, respecto_a) arbolHijo1 * - arbolHijo2 arbolHijo2 * /"
-    end
-  else #Es una variable tomada como constante
-    return 0
-  end
-end
-
 
 
 
